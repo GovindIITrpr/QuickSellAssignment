@@ -11,6 +11,7 @@ const Dropdown = () => {
   const dropdownRef = useRef(null);
   const dropdownRef1 = useRef(null);
   const dropdownRef2 = useRef(null);
+
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (
@@ -41,10 +42,11 @@ const Dropdown = () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
+  
   return (
     <div className="dropdown" ref={dropdownRef}>
       <button type="button" onClick={() => setToggle(!toggle)}>
-      <RiEqualizerFill />         
+      <RiEqualizerFill /> 
       {" "}
        Display{" "} <VscChevronDown />
         <i className="fa-solid fa-chevron-down"></i>

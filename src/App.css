@@ -1,41 +1,4 @@
 
-.App {
-  text-align: center; 
-}
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
 
 
 /* New CSS */
@@ -45,6 +8,45 @@
   justify-content: space-between;
   flex-direction: row;
   flex-wrap: wrap;
+  align-items: start;
+  padding: 20px;
+ 
+  /* min-height: 660px; */
+  margin: 0 20px;
+}
+
+.panel_class{
+  display: flex;
+  justify-content: center !important;
+  align-items: center !important;
+  flex-direction: column;
+  padding: 0;
+  width: 350px !important;
+
+}
+.header_panel{
+  display: flex;
+  justify-content: space-between;
   align-items: center;
+  flex-direction: row;
+  width: 350px;
   padding: 0 10px;
+  transform: translateX(20px);
+
+}
+
+.header_panel div{
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  flex-direction: row;
+}
+
+.header_panel div p:first-child{
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.header_panel div span{
+  padding-right: 10px;
 }

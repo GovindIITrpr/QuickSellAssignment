@@ -1,11 +1,13 @@
 .card {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1);
     transition: 0.3s;
-    margin: 10px;
+    margin: 10px 0;
     padding: 5px;
-    height: 150px;
-    width: 320px;
+    height: 130px;
+    width: 350px;
     border-radius: 5px;
+    background-color: white;
+
   }
   
   .card:hover {
@@ -45,9 +47,11 @@
     left: 0;
     padding: 3px;
     margin: 5px;
+    bottom: 0;
   }
   .btn{
     margin-right: 5px;
-    border: 1px solid #dbdbdb;
-    border-radius: 2px;
+    border: 1px solid #d8d7d7;
+    border-radius: 4px;
+    background-color: white;
   }
