@@ -2,35 +2,36 @@ import { useEffect, useRef, useState } from "react";
 import "./Dropdown.css";
 import { VscChevronDown } from "react-icons/vsc";
 import { RiEqualizerFill } from "react-icons/ri";
+import { handleAddQueryFilters } from "../../set.query";
 
-
-const Dropdown = () => {
+const Dropdown = ({ setFilterState, filterState }) => {
   const [toggle, setToggle] = useState(false);
   const [subtoggle1, setSubToggle1] = useState(false);
   const [subtoggle2, setSubToggle2] = useState(false);
   const dropdownRef = useRef(null);
   const dropdownRef1 = useRef(null);
   const dropdownRef2 = useRef(null);
-
+  const grouping_options = ["Status", "User", "Priority"];
+  const ordering_options = ["Priority", "Title"];
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (
-        (dropdownRef )?.current &&
-        !(dropdownRef)?.current.contains(event.target)
+        dropdownRef?.current &&
+        !dropdownRef?.current.contains(event.target)
       ) {
         setToggle(false);
         setSubToggle1(false);
         setSubToggle2(false);
       }
       if (
-        (dropdownRef1)?.current &&
-        !(dropdownRef1)?.current.contains(event.target)
+        dropdownRef1?.current &&
+        !dropdownRef1?.current.contains(event.target)
       ) {
         setSubToggle1(false);
       }
       if (
-        (dropdownRef2)?.current &&
-        !(dropdownRef2 )?.current.contains(event.target)
+        dropdownRef2?.current &&
+        !dropdownRef2?.current.contains(event.target)
       ) {
         setSubToggle2(false);
       }
@@ -42,13 +43,11 @@ const Dropdown = () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
-  
+
   return (
     <div className="dropdown" ref={dropdownRef}>
       <button type="button" onClick={() => setToggle(!toggle)}>
-      <RiEqualizerFill /> 
-      {" "}
-       Display{" "} <VscChevronDown />
+        <RiEqualizerFill /> Display <VscChevronDown />
         <i className="fa-solid fa-chevron-down"></i>
       </button>
       {toggle && (
@@ -63,16 +62,27 @@ const Dropdown = () => {
                   setSubToggle2(false);
                 }}
               >
-                Status <VscChevronDown />
+                {filterState?.grouping} <VscChevronDown />
               </button>
               {subtoggle1 && (
                 <div className="subcontent">
                   <ul>
-                    <li>First</li>
-                    <li>Second</li>
-                    <li>Third</li>
-                    <li>Fourth</li>
-                    <li>Fifth</li>
+                    {grouping_options.map((g, i) => {
+                      return (
+                        <li
+                          key={i}
+                          onClick={() => {
+                            setFilterState((prevFilterState) => ({
+                              ...prevFilterState,
+                              grouping: g,
+                            }));
+                            setSubToggle1(false);
+                          }}
+                        >
+                          {g}
+                        </li>
+                      );
+                    })}
                   </ul>
                 </div>
               )}
@@ -88,16 +98,27 @@ const Dropdown = () => {
                   setSubToggle1(false);
                 }}
               >
-                Priority <VscChevronDown />
+                {filterState?.ordering} <VscChevronDown />
               </button>
               {subtoggle2 && (
                 <div className="subcontent">
                   <ul>
-                    <li>First</li>
-                    <li>Second</li>
-                    <li>Third</li>
-                    <li>Fourth</li>
-                    <li>Fifth</li>
+                    {ordering_options.map((o, i) => {
+                      return (
+                        <li
+                          key={i}
+                          onClick={() => {
+                            setFilterState((prevFilterState) => ({
+                              ...prevFilterState,
+                              ordering: o,
+                            }));
+                            setSubToggle2(false);
+                          }}
+                        >
+                          {o}
+                        </li>
+                      );
+                    })}
                   </ul>
                 </div>
               )}

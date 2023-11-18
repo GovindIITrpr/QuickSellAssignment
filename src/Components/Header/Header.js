@@ -1,11 +1,11 @@
-import React from 'react';
-import './Header.css';
-import Dropdown from './Dropdown';
+import React from "react";
+import "./Header.css";
+import Dropdown from "./Dropdown";
 
 const Header = () => {
   return (
-    <div className='header'>
-     <Dropdown/>
+    <div className="header">
+      <Dropdown />
     </div>
   );
 };
